@@ -23,15 +23,15 @@ result_t findLargestBst(Node *ptr)
     if (ptr) {
         result_t l_result = findLargestBst(ptr->left);
         result_t r_result = findLargestBst(ptr->right);
-        
-        if (!l_result.is_BST || (l_result.size > 0 && ptr->data < l_result.max)) {
+
+        if (!l_result.is_BST || (l_result.size > 0 && ptr->data <= l_result.max)) {
             result.is_BST = false;
         }
         else {
             result.min = (l_result.size) ? l_result.min : ptr->data;
         }
         
-        if (!r_result.is_BST || (r_result.size > 0 && ptr->data > r_result.min)) {
+        if (!r_result.is_BST || (r_result.size > 0 && ptr->data >= r_result.min)) {
             result.is_BST = false;
         }
         else {
